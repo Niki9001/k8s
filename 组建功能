@@ -1,0 +1,19 @@
+服务分类
+  有状态服务：DBMS
+  无状态服务：LVS APACHE
+
+高可用集群副本数据最好是 >= 3 奇数个
+
+API Server:所有服务访问统一入口
+Controller Manager：维持副本期望数目
+Scheduler：负责介绍任务，选择合适的节点进行分配任务
+ETCD：键值对数据库 储存k8s集群所有重要信息（持久化）
+kubelet：直接跟容器引擎交互实现容器的生命周期管理
+kube-proxy：负责写入规则至 IPTABLES、IPVS实现服务映射访问
+
+CoreDNS：可以为集群中的SVC创建一个域名IP的对应关系解析
+Dashboard：给k8s集群提供一个 B/S 结构访问体系
+Ingress Controller：官方只能实现四层代理，IC可以实现七层代理
+Federation：提供一个可以跨集群中心多k8s统一管理功能
+Prometheus：提供一个k8s集群的监控能力
+ELK：提供k8s集群日志统一分析介入平台
